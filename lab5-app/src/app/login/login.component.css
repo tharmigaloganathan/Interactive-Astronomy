@@ -1,0 +1,58 @@
+.body {
+    background-color: #000000;
+}
+
+.parallax {
+    /* The image used */
+    background-image: linear-gradient(
+    rgba(255,255,255,0.2),
+    rgba(0,0,0,0.3)),url("../../assets/images/background-image.jpg");
+    /*background-image: url("working.jpg");*/
+    /*opacity: 0.5;*/
+
+    /* Set a specific height */
+    height: 1000px;
+    width:100%;
+    text-align: center;
+    vertical-align: text-bottom;
+    font-size: 80px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ptext{
+    font-family: 'Gruppo', cursive;
+  position:absolute;
+  opacity: 1 !important;
+  top:30%;
+  /*left: 0%;*/
+  width:100%;
+  text-align:center;
+  color:#FFFFFF;
+  font-size:70px;
+  letter-spacing:8px;
+  /*text-transform:uppercase;*/
+}
+.field {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+.loginform{
+    font-family: 'Gruppo', cursive;
+  position:absolute;
+  opacity: 1 !important;
+  margin-left: 37%;
+  font-family: 'Kanit', sans-serif;
+  top:30%;
+  /*left: 10%;*/
+  width:500px;
+  text-align:center;
+  color:#ffffff;
+  font-size:30px;
+  /*letter-spacing:8px;*/
+  text-transform:uppercase;
+}

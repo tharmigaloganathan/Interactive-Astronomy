@@ -84,9 +84,6 @@ router.route('/users/:user_id')
         });
     });
 
-
-
-
 //setting up app to use this router
 app.use('/api', router);
 
