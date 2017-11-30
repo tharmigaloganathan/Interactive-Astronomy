@@ -16,8 +16,6 @@
         </a>
     </div>
 </div>
-<!-- <br /><br /><br /><br /><br /><br /> -->
-
 <div class = "parallax">
     <div class="ptext">
         LOGIN
@@ -25,6 +23,7 @@
     <div class="loginform">
         <br /><br /><br /><br /><br />
         <form class="ui inverted large form">
+
             <div class="ui inverted stacked segment">
                 <br />
                 <div class="field">
@@ -39,9 +38,10 @@
                         <input type="password" name="password" placeholder="Password">
                     </div>
                 </div>
-                <div class="ui large teal submit button">Authenticate</div><br /><br />
+                <div (click)="getUsers();" class="ui large teal submit button">Authenticate</div><br /><br />
                 New to us? <a href="https://semantic-ui.com/examples/login.html#">create a new account</a>
-                <div class="ui error message"></div>
+                <div style="color: red;" id="errmsg"></div>
+                <div style="color: green;" id="successmsg"></div>
             </div>
         </form>
     </div>
