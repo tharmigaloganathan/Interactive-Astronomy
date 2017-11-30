@@ -7,8 +7,8 @@
     <a class="item">
         Messages
     </a>
-    <a class="item">
-        Friends
+    <a routerLink="/dashboard" class="item">
+        Dashboard
     </a>
     <div class="right menu">
         <a routerLink="/login" class="active item">
@@ -20,28 +20,27 @@
     <div class="ptext">
         LOGIN
     </div>
-    <div class="loginform">
+    <div class="loginform" *ngFor="let user of users" >
         <br /><br /><br /><br /><br />
         <form class="ui inverted large form">
-
             <div class="ui inverted stacked segment">
                 <br />
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
+                        <input #username type="text" name="email" placeholder="{{user.username}}">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                        <input #password type="password" name="password" placeholder="{{user.password}}">
                     </div>
                 </div>
-                <div (click)="getUsers();" class="ui large teal submit button">Authenticate</div><br /><br />
+                <div (click)="authenticate(username.value, password.value);" class="ui large teal submit button">Authenticate</div><br /><br />
                 New to us? <a href="https://semantic-ui.com/examples/login.html#">create a new account</a>
-                <div style="color: red;" id="errmsg"></div>
-                <div style="color: green;" id="successmsg"></div>
+                <div [hidden]="!ngErrorMsg" style="color: red;">{{ngErrorMsg}}</div>
+                <div [hidden]="!ngSuccessMsg" style="color: green;">{{ngSuccessMsg}}</div>
             </div>
         </form>
     </div>

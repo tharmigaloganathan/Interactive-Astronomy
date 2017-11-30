@@ -13,6 +13,7 @@ import { AuthenticateService } from './authenticate.service'
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'main',      component: MainComponent },
+  { path: 'dashboard',      component: DashboardComponent },
   // {
   //   path: 'heroes',
   //   component: HeroListComponent,

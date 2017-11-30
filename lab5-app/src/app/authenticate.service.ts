@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+// import { JwtHelper } from '@auth0/angular-jwt';
+
 import {User} from './user';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -6,13 +8,19 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthenticateService {
+    //maybe user should be authenticated within this service? OR give a method the component can user to obtain a token
 
+  // constructor(private _http:Http, public jwtHelper: JwtHelper) { }
   constructor(private _http:Http) { }
 
   getData():Observable<User[]> {
     return this._http.get('http://localhost:8080/api/users')
         .map(this.extractData)
         .catch(this.handleError);
+  }
+
+  private isAuthenticated() {
+
   }
 
   private extractData(res:Response) {
