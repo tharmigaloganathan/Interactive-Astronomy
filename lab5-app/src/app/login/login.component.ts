@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticateService} from '../authenticate.service'; //injecting AuthenticateService
 import {User} from '../user';
-import {ROUTER_DIRECTIVES, Router, Location} from "@angular/router";
+import { Router} from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -31,10 +31,19 @@ export class LoginComponent implements OnInit {
     }
 
     authenticate(username:string,password:string){
+        if(username == "" ) {
+            this.ngErrorMsg = "enter a username!";
+            return;
+        }
+        if(password == "" ) {
+            this.ngErrorMsg = "enter a password!";
+            return;
+        }
         console.log(username + password);
         for(var i = 0; i < this.users.length; i++) {
             if(this.users[i].username == username) {
                 if (this.users[i].password == password){
+                    // this._authenticateService.setToken()
                     this.ngErrorMsg = "";
                     this.ngSuccessMsg = "success";
                     this.router.navigate(['./dashboard']);
@@ -42,7 +51,6 @@ export class LoginComponent implements OnInit {
                 }
             }
         }
-        this.ngSuccessMsg ="";
         this.ngErrorMsg = "incorrect credentials!";
         return;
     }

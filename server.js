@@ -2,15 +2,28 @@
 var express    = require('express');
 var app        = express();
 var bodyParser = require('body-parser');
-var User     = require('./models/app/user');
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://se3316:se3316@ds123956.mlab.com:23956/se3316_lab5', {
   useMongoClient: true,
 });
+const jwt = require('express-jwt');
+const cors = require('cors');
+
+
+//IMPORT MODELS
+var User     = require('./models/app/user');
+var Auth     = require('./models/app/auth');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
+
+
+const authCheck = jwt({
+  secret: new Buffer('AUTH0_SECRET', 'base64'),
+  audience: 'AUTH0_CLIENT_ID'
+});
 
 var port = process.env.PORT || 8080;
 
@@ -28,6 +41,25 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
+router.route('/auths')
+    .post(function(req,res) {
+        var auth = new Auth();
+        auth.username = req.body.username;
+        auth.token = req.body.token;
+        auth.save(function(err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Course saved!'});
+        });
+    })
+    .get(function(req, res) {
+        Auth.find(function(err, auth) {
+            if (err)
+                res.send(err);
+            res.json(auth);
+        })
+    });
+
 router.route('/users')
     .post(function(req, res) {
         var user = new User();
@@ -40,7 +72,6 @@ router.route('/users')
             res.json({ message: 'Course saved!' });
         });
     })
-
     .get(function(req, res) {
         User.find(function(err, users) {
             if (err)

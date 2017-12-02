@@ -20,7 +20,7 @@
     <div class="ptext">
         LOGIN
     </div>
-    <div class="loginform" *ngFor="let user of users" >
+    <div class="loginform" >
         <br /><br /><br /><br /><br />
         <form class="ui inverted large form">
             <div class="ui inverted stacked segment">
@@ -28,13 +28,13 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input #username type="text" name="email" placeholder="{{user.username}}">
+                        <input #username type="text" name="email" placeholder="Email Address">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input #password type="password" name="password" placeholder="{{user.password}}">
+                        <input #password type="password" name="password" placeholder="Password">
                     </div>
                 </div>
                 <div (click)="authenticate(username.value, password.value);" class="ui large teal submit button">Authenticate</div><br /><br />
