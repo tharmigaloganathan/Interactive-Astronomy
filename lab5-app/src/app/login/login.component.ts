@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticateService} from '../authenticate.service'; //injecting AuthenticateService
+import {AuthenticateGuard} from '../authenticate.guard';
 import {User} from '../user';
 import { Router} from "@angular/router";
 
@@ -7,7 +8,7 @@ import { Router} from "@angular/router";
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
-    providers: [AuthenticateService] //registering AuthenticateService as a provider
+    providers: [AuthenticateService, AuthenticateGuard] //registering AuthenticateService as a provider
 })
 export class LoginComponent implements OnInit {
 
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private _authenticateService:AuthenticateService, private router: Router) {
         this.getUsers();
+        this._authenticateService.logout();
     }
 
     ngOnInit() {
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
             if(this.users[i].username == username) {
                 if (this.users[i].password == password){
                     // this._authenticateService.setToken()
+                    this._authenticateService.createAndSetToken("admin", true);
                     this.ngErrorMsg = "";
                     this.ngSuccessMsg = "success";
                     this.router.navigate(['./dashboard']);

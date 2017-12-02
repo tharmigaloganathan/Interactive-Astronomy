@@ -1,34 +1,33 @@
-.body {
-    background-color: #000000;
-}
+/*#body {
+    background-image: url("../../assets/images/background-image.jpg");
+    background-attachment: fixed;
+}*/
 
 .parallax {
-    /* The image used */
     background-image: linear-gradient(
     rgba(255,255,255,0.2),
-    rgba(0,0,0,0.3)),url("../../assets/images/background-image.jpg");
-    /*background-image: url("working.jpg");*/
-    /*opacity: 0.5;*/
-
-    /* Set a specific height */
-    height: 1000px;
+    rgba(100,100,100,0.3)),url("../../assets/images/background-image.jpg");
+    background-attachment: fixed;
+    height: 100%;
     width:100%;
     text-align: center;
     vertical-align: text-bottom;
-    font-size: 80px;
-
-    /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    /*background-image: linear-gradient(
+    rgba(255,255,255,0.2),
+    rgba(100,100,100,0.3)),url("../../assets/images/background-image.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;*/
 }
 
 .ptext{
     font-family: 'Gruppo', cursive;
   position:absolute;
   opacity: 1 !important;
-  top:30%;
+  top:20%;
   /*left: 0%;*/
   width:100%;
   text-align:center;
@@ -42,7 +41,43 @@
   position:absolute;
   opacity: 1 !important;
   font-family: 'Kanit', sans-serif;
-  top:30%;
+  top:20%;
+  /*left: 10%;*/
+  width:100%;
+  text-align:center;
+  color:#ffffff;
+  font-size:30px;
+  letter-spacing:8px;
+  text-transform:uppercase;
+}
+i {
+    z-index: 40;
+}
+.ui.image {
+    /*overflow: hidden;*/
+    z-index:1;
+    /*clip: rect(0px, 200px, 140px, 0px);*/
+    /*width: 150px;
+    height: 90px;
+    position: absolute;
+    top: -20px;
+    left: -55px;*/
+    /*object-fit: cover;
+    height: 400px;*/
+
+}
+.ui.grid {
+    /*font-family: 'Gruppo', cursive;*/
+    margin-left: 14px;
+    width : 98% !important;
+    /*margin-right: 500px;*/
+    background-image:linear-gradient(
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.6));
+  position:absolute;
+  opacity: 1 !important;
+  font-family: 'Kanit', sans-serif;
+  top:40%;
   /*left: 10%;*/
   width:100%;
   text-align:center;

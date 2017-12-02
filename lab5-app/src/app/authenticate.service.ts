@@ -13,7 +13,10 @@ export const TOKEN_NAME: string = 'jwt_token';
 @Injectable()
 export class AuthenticateService {
 
-    private today: any;
+    private iat: any;
+    private exp: any;
+    private newToken: any;
+    private buffer: any;
     private url: string = 'http://localhost:8080/api/';
     private headers = new Headers({ 'Content-Type': 'application/json' });
     //maybe user should be authenticated within this service? OR give a method the component can user to obtain a token
@@ -22,66 +25,51 @@ export class AuthenticateService {
     constructor(private _http:Http) { }
 
     //ALL FUNCTIONS BELOW DEAL WITH TOKEN IN LOCAL STORAGE
-    loggedIn() {
-        return tokenNotExpired();
-    }
-    logout() {
-        localStorage.removeItem('id_token');
-    }
-    getToken(): string {
+    getToken(): any {
         return localStorage.getItem(TOKEN_NAME);
     }
-    setToken(token: string): void {
-        localStorage.setItem(TOKEN_NAME, token);
+    addExpAndIatToToken(_token: any):any {
+        this.iat = new Date();
+        this.exp = new Date();
+        this.exp = new Date(this.exp.setHours(this.iat.getHours() + 2));
+        _token.exp = this.exp;
+        _token.iat = this.exp;
+        return _token;
     }
-    getTokenExpirationDate(token: string): Date {
-        const decoded = jwt_decode(token);
-
-        if (decoded.exp === undefined) return null;
-
-        const date = new Date(0);
-        date.setUTCSeconds(decoded.exp);
-        return date;
+    checkTokenExpirationDate(_exp:any): boolean {
+        this.iat = new Date();
+        this.exp = new Date(_exp);
+        return this.exp > this.iat;
     }
-    createAndSetToken(username: string, admin: boolean) {
-        //token with username, admin, current time, expiry time
-        this.today = Date.now();
-        // const encoded = jwt_decode(token);
+    encodeBase64(_token: any): string {
+        _token = new Buffer(JSON.stringify(_token)).toString("base64");
+        return _token;
     }
-
-    isTokenExpired(token?: string): boolean {
-        if(!token) token = this.getToken();
-        if(!token) return true;
-
-        const date = this.getTokenExpirationDate(token);
-        if(date === undefined) return false;
-        return !(date.valueOf() > new Date().valueOf());
+    decodeBase64(_token: string): any {
+        _token = JSON.parse(atob(_token));
+        return _token;
     }
-
-    //CREATES A BRAND NEW TOKEN PUTS IT IN THE USER'S LOCAL STORAGE
-    login(credentials) {
-        this._http.post(`${this.url}/auth`, credentials)
-        .map(res => res.json())
-        .subscribe(
-            // We're assuming the response will be an object
-            // with the JWT on an id_token key
-            data => localStorage.setItem('id_token', data.id_token),
-            error => console.log(error)
-        );
+    isTokenValid(): boolean {
+        return this.checkTokenExpirationDate(this.decodeBase64(this.getToken()).exp));
     }
-
-    // login(user): Promise<string> {
-    //     //this creates a new header for the assignment
-    //     return this._http
-    //     .post(`${this.url}/auth`, JSON.stringify(user), { headers: this.headers })
-    //     .toPromise()
-    //     .then(res => res.text());
-    // }
+    loggedIn() {
+        if(this.getToken() == null) return false;
+        return this.isTokenValid();
+    }
+    logout() {
+        localStorage.removeItem('jwt_token');
+    }
+    createAndSetToken(_username: string, _admin: boolean) {
+        this.newToken = {
+            username: _username;
+            admin: _admin;
+        }
+        this.newToken = this.addExpAndIatToToken(this.newToken);
+        localStorage.setItem(TOKEN_NAME, this.encodeBase64(this.newToken));
+    }
 
     getData():Observable<User[]> {
-        this.today = new Date();
-        // this.today = Date.now();
-        console.log(this.today);
+
         return this._http.get(`${this.url}/users`)
         .map(this.extractData)
         .catch(this.handleError);

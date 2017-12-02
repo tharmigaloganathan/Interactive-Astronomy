@@ -20,6 +20,7 @@ export class AuthenticateGuard implements CanActivate {
     allowed to continue to the route
     */
     canActivate() {
+        console.log(this._authenticateService.loggedIn());
         if(this._authenticateService.loggedIn()) {
             return true;
         } else {

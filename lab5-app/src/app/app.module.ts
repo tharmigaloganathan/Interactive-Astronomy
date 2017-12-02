@@ -17,8 +17,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'main',       component: MainComponent },
   { path: '',       component: MainComponent },
-  // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard] }
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard] }
+  // { path: 'dashboard', component: DashboardComponent }
   //[AUTHENTICATEGUARD] SHOULD BE APPLIED TO EACH ROUTE THAT SHOULD BE KEPT PRIVATE
 ];
 
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpModule
   ],
-  providers: [AuthenticateService, HttpClientModule],
+  providers: [AuthenticateService, HttpClientModule, AuthenticateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
