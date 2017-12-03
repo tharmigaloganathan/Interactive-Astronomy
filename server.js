@@ -5,12 +5,15 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://se3316:se3316@ds123956.mlab.com:23956/se3316_lab5', {
   useMongoClient: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 1000
 });
 const jwt = require('express-jwt');
 const cors = require('cors');
 
 
 //IMPORT MODELS
+var PhotoCollection = require('./models/app/photoCollection');
 var User     = require('./models/app/user');
 var Auth     = require('./models/app/auth');
 
@@ -40,6 +43,54 @@ router.use(function(req, res, next) { //middleware
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
+
+router.route('/photocollections')
+    .post(function(req,res) {
+        var photoCollection = new PhotoCollection();
+        photoCollection.username = req.body.username;
+        photoCollection.description = req.body.description;
+        photoCollection.name = req.body.name;
+        photoCollection.numberOfRatings = req.body.numberOfRatings;
+        photoCollection.sumOfRatings = req.body.sumOfRatings;
+        photoCollection.public = req.body.public;
+        photoCollection.photos = req.body.photos;
+        photoCollection.save(function(err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'User saved!'});
+        });
+    })
+    .get(function(req, res) {
+        PhotoCollection.find(function(err, photoCollection) {
+            if (err)
+                res.send(err);
+            res.json(photoCollection);
+        })
+    });
+
+router.route('/photocollections/:user_id')
+    .get(function(req, res) {
+        PhotoCollection.findById(req.params.user_id, function(err, photoCollection) {
+            if (err)
+                res.send(err);
+            res.json(photoCollection);
+        });
+    })
+
+    .post(function(req, res) {
+        PhotoCollection.findById(req.params.user_id, function(err, photoCollection) {
+            if (err)
+                res.send(err);
+            photoCollection.username = req.body.username;
+            photoCollection.photos.push(req.body.photos);
+            photoCollection.save(function(err) {
+                if (err)
+                    res.send(err);
+                res.json({ message: 'User updated!' });
+            });
+
+        });
+    })
 
 router.route('/auths')
     .post(function(req,res) {

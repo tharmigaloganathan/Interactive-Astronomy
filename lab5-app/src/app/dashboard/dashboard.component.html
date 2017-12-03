@@ -4,7 +4,7 @@
             Home
         </a>
         <a class="item">
-            Messages
+            Profile
         </a>
         <a routerLink="/dashboard" class="active item">
             Dashboard
@@ -26,9 +26,9 @@
             <button (click)="getData(searchQuery.value);" class="ui button">get images</button>
         </div>
         <div id="photoGrid" class = "ui divided grid" >
-            <div class="four wide column" *ngFor="let image of images" ><div class="ui bordered image">
+            <div class="four wide column" *ngFor="let image of images; let i = index" ><div class="ui bordered image">
                 <img class="ui bordered image" src="{{image}}"><br />
-                <a href="askdj" style="color: white;"><i href="" class="add square icon"></i></a>
+                <a (click)="addImageToLocalStorage(image)" style="color: white;"><i href="" class="add square icon"></i></a>
                 <a href="{{image}}" style="color: white;"><i class="external icon"></i></a>
             </div></div>
             <!-- <div class="four wide column"><a href="" class="ui fluid image">

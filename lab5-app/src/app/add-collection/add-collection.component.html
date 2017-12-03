@@ -1,0 +1,42 @@
+
+<div class="ui fixed inverted menu">
+    <a routerLink="/main" class="item">
+        Home
+    </a>
+    <a class="item">
+        Profile
+    </a>
+    <a routerLink="/dashboard" class="item">
+        Dashboard
+    </a>
+    <div class="right menu">
+        <a routerLink="/login" class="ui item">
+            Login
+        </a>
+    </div>
+</div>
+
+
+<div class = "parallax">
+    <div class="ptext">
+        Add Collection<br /><br /><br /><br /><br /><br />
+        <div class="ptext2">
+            Name: &nbsp;
+            <div class="ui input focus" style="font-size: 14px;width: 20%;">
+                <input #name type="text" placeholder="Enter name of new collection">
+            </div>&nbsp; &nbsp;&nbsp; &nbsp;
+            Description: &nbsp;
+            <div class="ui input focus" style="font-size: 14px;width: 30%;">
+                <input #description type="text" placeholder="Enter a description for your new collection">
+            </div><br /><br /><br /><br />
+            <div class="ptext3">Would you like to make this collection&nbsp; &nbsp;
+            <div class="ui buttons">
+              <button (click)="createCollection(name.value,description.value,true);" class="ui positive button">Public</button>
+              <div class="or"></div>
+              <button (click)="createCollection(name.value,description.value,false);" class="ui button">Private</button>
+            </div></div>
+        </div>
+
+    </div>
+
+</div>
