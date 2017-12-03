@@ -12,6 +12,7 @@ import { AuthenticateService } from './authenticate.service';
 
 import { AuthenticateGuard } from './authenticate.guard';
 import { SecureStuffComponent } from './secure-stuff/secure-stuff.component';
+import { AddImageComponent } from './add-image/add-image.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     LoginComponent,
     MainComponent,
     DashboardComponent,
-    SecureStuffComponent
+    SecureStuffComponent,
+    AddImageComponent
   ],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: true }),
