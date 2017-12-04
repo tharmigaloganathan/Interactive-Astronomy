@@ -1,4 +1,4 @@
-
+<!-- NAVBAR -->
 <div class="ui fixed inverted menu">
     <a routerLink="/main" class="item">
         Home
@@ -19,27 +19,29 @@
     </div>
 </div>
 
-
+<!-- BODY CONTECT WRAPPED IN A PARALLAX CLASS FOR THE BACKGROUND PICTURE-->
 <div class = "parallax">
-    <div class="ptext">
+    <div class="title">
+        <!-- TITLE -->
         Add Collection<br /><br /><br /><br /><br /><br />
-        <div class="ptext2">
+        <div class="body-text">
+            <!-- FIELD ASKING FOR NAME -->
             Name: &nbsp;
             <div class="ui input focus" style="font-size: 14px;width: 20%;">
                 <input #name type="text" placeholder="Enter name of new collection">
             </div>&nbsp; &nbsp;&nbsp; &nbsp;
+            <!-- FIELD ASKING FOR DESCRIPTION -->
             Description: &nbsp;
             <div class="ui input focus" style="font-size: 14px;width: 30%;">
                 <input #description type="text" placeholder="Enter a description for your new collection">
             </div><br /><br /><br /><br />
-            <div class="ptext3">Would you like to make this collection&nbsp; &nbsp;
-            <div class="ui buttons">
-              <button (click)="createCollection(name.value,description.value,true);" routerLink="/user-profile" class="ui positive button">Public</button>
-              <div class="or"></div>
-              <button (click)="createCollection(name.value,description.value,false);" routerLink="/user-profile" class="ui button">Private</button>
-            </div></div>
+            <!-- BUTTONS TO CHOOSE PRIVACY AND CREATE THE COLLECTION -->
+            Would you like to make this collection&nbsp; &nbsp;
+                <div class="ui buttons">
+                  <button (click)="createCollection(name.value,description.value,true);" routerLink="/user-profile" class="ui positive button">Public</button>
+                  <div class="or"></div>
+                  <button (click)="createCollection(name.value,description.value,false);" routerLink="/user-profile" class="ui button">Private</button>
+                </div>
         </div>
-
     </div>
-
 </div>

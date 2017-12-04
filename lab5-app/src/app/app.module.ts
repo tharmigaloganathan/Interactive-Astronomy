@@ -31,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'add-collection', component: AddCollectionComponent }
   { path: 'view-collection', component: ViewCollectionComponent }
   { path: 'edit-collection', component: EditCollectionComponent }
+  { path: 'new-account', component: CreateNewAccountComponent }
   // { path: 'dashboard', component: DashboardComponent }
   //[AUTHENTICATEGUARD] SHOULD BE APPLIED TO EACH ROUTE THAT SHOULD BE KEPT PRIVATE
 ];

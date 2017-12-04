@@ -1,3 +1,53 @@
-<p>
-  create-new-account works!
-</p>
+
+<div class="ui fixed inverted menu">
+    <a routerLink="/main" class="item">
+        Home
+    </a>
+    <a routerLink="/user-profile" class="ui active item">
+        Your Collections
+    </a>
+    <a routerLink="/dashboard" class="item">
+        Browse Images
+    </a>
+    <a routerLink="/browse-collections" class="item">
+        Browse Collections
+    </a>
+    <div class="right menu">
+        <a routerLink="/login" class="ui item">
+            Login
+        </a>
+    </div>
+</div>
+
+
+<div class = "parallax">
+    <div class="ptext">
+        Create a New Account<br /><br />
+        <a class="ptext4" routerLink="/login">Do you already have an account? Go to the login page.</a>
+        <br /><br />
+    </div>
+
+    <div class="ptext2">
+        First Name: &nbsp;
+        <div class="ui input focus" style="font-size: 14px;width: 20%;">
+            <input #name type="text" placeholder="First Name">
+        </div>&nbsp; &nbsp;&nbsp; &nbsp;
+        Last Name: &nbsp;
+        <div class="ui input focus" style="font-size: 14px;width: 30%;">
+            <input #description type="text" placeholder="Last Name">
+        </div><br /><br /><br /><br />
+
+        Email Address: &nbsp;
+        <div class="ui input focus" style="font-size: 14px;width: 30%;">
+            <input #name type="text" placeholder="Email Address">
+        </div>&nbsp; &nbsp;&nbsp; &nbsp;
+        Password: &nbsp;
+        <div class="ui input focus" style="font-size: 14px;width: 20%;">
+            <input #password type="password" name="password" placeholder="Password">
+        </div>&nbsp; &nbsp;&nbsp; &nbsp;
+         <br /><br /> <br /><br />
+        <div (click)="authenticate(username.value, password.value);" class="ui large teal submit button">Authenticate</div><br /><br />
+         <br /><br />
+
+    </div>
+</div>

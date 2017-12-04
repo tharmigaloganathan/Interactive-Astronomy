@@ -13,11 +13,25 @@ export const ITEM_NAME: string = 'edit_collection_id';
 export class EditCollectionComponent implements OnInit {
     private collectionID: string;
     private collection: any = {};
+    private imagesToDelete: string[] = [];
 
   constructor(private _editCollections: EditCollectionsService, private router: Router) {
       this.collectionID = localStorage.getItem(ITEM_NAME);
       console.log(this.current_id);
       this.getCollection();
+  }
+
+  deleteImage() {
+      //change colour?, add to list of images to deleteImage
+      //reload page
+  }
+
+  saveChanges(_name: string, _description:string, _public: boolean){
+      //check to see if _name and _description are null, if null, keep unchanged
+      //check if any images are in "imagesToDelete", and delete them from the collection.photos array
+      //check _public
+      //make post
+      //redirect to user-profile
   }
 
   getCollection() {
