@@ -40,6 +40,7 @@ export class EditCollectionsService {
     }
 
     postExistingCollection(collection: any, _entryID:string) {
+        this._http.delete(`${this.url}/photocollections/${_entryID}`).subscribe((ok)=>{console.log(ok)});
         const body = {
             username: collection.username,
             description: collection.description,
@@ -47,7 +48,7 @@ export class EditCollectionsService {
             numberOfRatings: 0,
             sumOfRatings: 0,
             public: collection.public,
-            photos: []
+            photos: collection.photos
         }
         console.log(`${this.url}photocollections/${_entryID}`);
         const req = this._http.post(`${this.url}/photocollections/${_entryID}`, body);
@@ -62,6 +63,7 @@ export class EditCollectionsService {
                     this.temp.push(collections[i]);
                 }
             }
+            console.log(this.temp);
             return this.temp;
         });
     }

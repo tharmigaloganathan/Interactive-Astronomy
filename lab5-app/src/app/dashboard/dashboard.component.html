@@ -1,25 +1,28 @@
 
-    <div class="ui fixed inverted menu">
-        <a routerLink="/main" class="item">
-            Home
+<div class="ui fixed inverted menu">
+    <a routerLink="/main" class="item">
+        Home
+    </a>
+    <a routerLink="/user-profile" class="item">
+        Your Collections
+    </a>
+    <a routerLink="/dashboard" class="ui active item">
+        Browse Images
+    </a>
+    <a routerLink="/browse-collections" class="item">
+        Browse Collections
+    </a>
+    <div class="right menu">
+        <a routerLink="/login" class="ui item">
+            Login
         </a>
-        <a class="item">
-            Profile
-        </a>
-        <a routerLink="/dashboard" class="active item">
-            Dashboard
-        </a>
-        <div class="right menu">
-            <a routerLink="/login" class="ui item">
-                Login
-            </a>
-        </div>
     </div>
+</div>
 
 
     <div class = "parallax">
         <div class="ptext">
-            Your Dashboard<br /><br /><br /><br />
+            Browse Images<br /><br /><br /><br />
             <div class="ui input focus" style="font-size: 16px;width: 30%;">
                 <input #searchQuery type="text" placeholder="Search...">
             </div>

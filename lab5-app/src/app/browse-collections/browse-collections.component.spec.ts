@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SecureStuffComponent } from './secure-stuff.component';
+import { BrowseCollectionsComponent } from './browse-collections.component';
 
-describe('SecureStuffComponent', () => {
-  let component: SecureStuffComponent;
-  let fixture: ComponentFixture<SecureStuffComponent>;
+describe('BrowseCollectionsComponent', () => {
+  let component: BrowseCollectionsComponent;
+  let fixture: ComponentFixture<BrowseCollectionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SecureStuffComponent ]
+      declarations: [ BrowseCollectionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SecureStuffComponent);
+    fixture = TestBed.createComponent(BrowseCollectionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

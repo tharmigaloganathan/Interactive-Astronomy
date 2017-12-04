@@ -15,9 +15,6 @@ export class AddCollectionComponent implements OnInit {
   constructor(private _editCollections: EditCollectionsService) {
       this.username = this._editCollections.findUsername();
       console.log(this.username);
-
-
-
   }
 
   getUserCollections(_userName:string) {

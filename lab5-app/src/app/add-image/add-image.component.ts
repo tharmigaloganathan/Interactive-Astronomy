@@ -64,7 +64,6 @@ export class AddImageComponent implements OnInit {
                }
            }
        });
-       // this.collections = this._editCollections.getUserCollections(this._editCollections.findUsername());
    }
 
   ngOnInit() {

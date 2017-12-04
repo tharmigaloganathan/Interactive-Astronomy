@@ -12,17 +12,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthenticateService } from './authenticate.service';
 
 import { AuthenticateGuard } from './authenticate.guard';
-import { SecureStuffComponent } from './secure-stuff/secure-stuff.component';
 import { AddImageComponent } from './add-image/add-image.component';
 import { AddCollectionComponent } from './add-collection/add-collection.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { BrowseCollectionsComponent } from './browse-collections/browse-collections.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'main',       component: MainComponent },
   { path: '',       component: MainComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard] },
+  { path: 'browse-collections', component: BrowseCollectionsComponent},
   { path: 'add-image', component: AddImageComponent },
+  { path: 'user-profile', component: UserProfileComponent },
   { path: 'add-collection', component: AddCollectionComponent }
   // { path: 'dashboard', component: DashboardComponent }
   //[AUTHENTICATEGUARD] SHOULD BE APPLIED TO EACH ROUTE THAT SHOULD BE KEPT PRIVATE
@@ -34,10 +36,10 @@ const appRoutes: Routes = [
     LoginComponent,
     MainComponent,
     DashboardComponent,
-    SecureStuffComponent,
     AddImageComponent,
     AddCollectionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    BrowseCollectionsComponent
   ],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: true }),

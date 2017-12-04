@@ -77,11 +77,21 @@ router.route('/photocollections/:user_id')
         });
     })
 
+    .delete(function(req, res) {
+        PhotoCollection.remove({
+            _id: req.params.user_id
+        }, function(err, photoCollection) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Successfully deleted course!' });
+        });
+    })
+
     .post(function(req, res) {
         PhotoCollection.findById(req.params.user_id, function(err, photoCollection) {
             if (err)
                 res.send(err);
-            // var photoCollection = new PhotoCollection();
+            var photoCollection = new PhotoCollection();
             photoCollection.username = req.body.username;
             photoCollection.description = req.body.description;
             photoCollection.name = req.body.name;
@@ -97,7 +107,7 @@ router.route('/photocollections/:user_id')
             });
 
         });
-    })
+    });
 
 router.route('/auths')
     .post(function(req,res) {
