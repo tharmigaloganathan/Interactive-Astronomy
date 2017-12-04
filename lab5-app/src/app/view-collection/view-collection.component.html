@@ -9,7 +9,7 @@
     <a routerLink="/dashboard" class="item">
         Browse Images
     </a>
-    <a routerLink="/browse-collections" class="ui active item">
+    <a routerLink="/browse-collections" class="ui item">
         Browse Collections
     </a>
     <div class="right menu">
@@ -22,7 +22,7 @@
 
     <div class = "parallax">
         <div class="ptext">
-            Browse Collections<br /><br />
+            View Collection<br /><br />
             <!-- <a class="ptext3" routerLink="/add-collection">Or, would you like to create a new collection?</a> -->
             <br /><br />
         </div>
@@ -36,7 +36,7 @@
                 </div>
                 <img class="ui bordered image" src="{{collection.photos[0]}}">
                 <div class="ptext4">
-                    <a href="" (click)="viewCollection(collection._id)" routerLink="/view-collection" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
+                    <a href="" (click)="viewCollection(collection._id)" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
                 </div>
 
             </div></div>
