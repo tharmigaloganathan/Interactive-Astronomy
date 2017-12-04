@@ -21,12 +21,15 @@
     <div class="ptext">
         Add Image<br /><br /><br /><br />
 
-        <img class="ui large image" src={{imageURL}} style="background-color: #000000;"><br />
-        <select class="ui dropdown">
-            <option value="">Choose a Collection</option>
-            <option >Male</option>
-            <option>Female</option>
+        <img  class="ui large image" src={{imageURL}} style="background-color: #000000;"><br />
+
+        <select class="ui dropdown" #selectedCollection>
+            <select value="">Choose a Collection</select>
+            <option *ngFor="let collection of collections" [value]="collection.name" (change)="print(collection)"><p >{{collection.name}}</p></option>
         </select><br />
+        <div id="button" (click)="print(selectedCollection.value)" class="ui large teal submit button">Authenticate</div><br /><br />
+
+
         <a class="ptext2" routerLink="/add-collection">Or, would you like to create a new collection?</a>
 
     </div>

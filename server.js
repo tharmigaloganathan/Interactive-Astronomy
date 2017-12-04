@@ -81,8 +81,15 @@ router.route('/photocollections/:user_id')
         PhotoCollection.findById(req.params.user_id, function(err, photoCollection) {
             if (err)
                 res.send(err);
+            // var photoCollection = new PhotoCollection();
             photoCollection.username = req.body.username;
-            photoCollection.photos.push(req.body.photos);
+            photoCollection.description = req.body.description;
+            photoCollection.name = req.body.name;
+            photoCollection.numberOfRatings = req.body.numberOfRatings;
+            photoCollection.sumOfRatings = req.body.sumOfRatings;
+            photoCollection.public = req.body.public;
+            photoCollection.photos = req.body.photos;
+            console.log(req.body.photos+"hello");
             photoCollection.save(function(err) {
                 if (err)
                     res.send(err);

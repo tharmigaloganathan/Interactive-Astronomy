@@ -36,6 +36,9 @@
   letter-spacing:8px;
   /*text-transform:uppercase;*/
 }
+#button {
+    letter-spacing:0px;
+}
 .ptext2{
   font-family: 'Oswald', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   /*position:absolute;*/
