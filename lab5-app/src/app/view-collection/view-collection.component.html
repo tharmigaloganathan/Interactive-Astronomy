@@ -23,20 +23,35 @@
     <div class = "parallax">
         <div class="ptext">
             View Collection<br /><br />
-            <!-- <a class="ptext3" routerLink="/add-collection">Or, would you like to create a new collection?</a> -->
+            <!-- <div class="ui star rating">hello</div> -->
+            <!-- <div class="ui mini star rating"></div> -->
+            <a class="ptext2" routerLink="/add-collection">{{collection.name}}</a> <br/><br/><br/><br/>
+
+            <div class="ptext3">
+                    Rate this Collection! &nbsp; <div style="color: white;" class="ui huge star rating"></div>&nbsp;&nbsp;
+                    <button (click)="submitRating();"class="ui button">Submit Rating</button>
+                    <p style="color: red;">
+                        {{errormsg}}
+                    </p>
+            </div>
+
+
+            <!-- rate if the user does not own this collection AND user has not already rated this collection -->
             <br /><br />
         </div>
         <div id="photoGrid" class = "ui divided grid" >
-            <div class="four wide column" *ngFor="let collection of collections; let i = index" ><div class="ui bordered image">
+            <div class="four wide column" *ngFor="let photo of collection.photos; let i = index" ><div class="ui bordered image">
                 <div class="ptext2">
-                    <a *ngIf="collection.public" class = "ptext3" data-tooltip="Public Collection" href="" style="color: white;"><i class="users icon"></i></a>
+                    <!-- <a *ngIf="collection.public" class = "ptext3" data-tooltip="Public Collection" href="" style="color: white;"><i class="users icon"></i></a>
                     <a *ngIf="!collection.public" class = "ptext3" data-tooltip="Private Collection" href="" style="color: white;"><i class="unhide icon"></i></a>
-                    {{collection.name}} &nbsp;&nbsp;   {{collection.sumOfRatings/collection.numberOfRatings || collection.sumOfRatings}} <i class="star icon"></i>
+                    {{collection.name}} &nbsp;&nbsp;   {{collection.sumOfRatings/collection.numberOfRatings || collection.sumOfRatings}} <i class="star icon"></i> -->
 
                 </div>
-                <img class="ui bordered image" src="{{collection.photos[0]}}">
+                <img class="ui bordered image" src="{{photo}}">
                 <div class="ptext4">
-                    <a href="" (click)="viewCollection(collection._id)" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
+                    <a href="{{photo}}"  data-tooltip="View Image" style="color: white;"><i class="external icon"></i></a>
+                    <div class="ui star rating" data-rating="5"></div>
+
                 </div>
 
             </div></div>

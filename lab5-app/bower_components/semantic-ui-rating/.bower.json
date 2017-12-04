@@ -1,0 +1,40 @@
+{
+  "name": "semantic-ui-rating",
+  "description": "Rating - Semantic UI",
+  "homepage": "http://www.semantic-ui.com",
+  "author": {
+    "name": "Jack Lukic",
+    "web": "http://www.jacklukic.com"
+  },
+  "ignore": [
+    "docs",
+    "node",
+    "server",
+    "spec",
+    "src",
+    "test"
+  ],
+  "keywords": [
+    "semantic",
+    "ui",
+    "css3",
+    "framework"
+  ],
+  "license": [
+    "http://semantic-ui.mit-license.org/"
+  ],
+  "main": [
+    "rating.css"
+  ],
+  "version": "2.2.13",
+  "_release": "2.2.13",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.13",
+    "commit": "8262da09999969ae6afbd342e3933da938071103"
+  },
+  "_source": "https://github.com/Semantic-Org/UI-Rating.git",
+  "_target": "^2.2.13",
+  "_originalSource": "semantic-ui-rating",
+  "_direct": true
+}

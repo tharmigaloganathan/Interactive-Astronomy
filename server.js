@@ -16,6 +16,7 @@ const cors = require('cors');
 var PhotoCollection = require('./models/app/photoCollection');
 var User     = require('./models/app/user');
 var Auth     = require('./models/app/auth');
+var Rating    = require('./models/app/rating');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,6 +44,28 @@ router.use(function(req, res, next) { //middleware
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
+
+router.route('/ratings')
+    .post(function(req,res) {
+        var rating = new Rating();
+        rating.username = req.body.username;
+        rating.collection_name = req.body.collection_name;
+        rating.rating_value = req.body.rating_value;
+        rating.collection_username = req.body.collection_username;
+
+        rating.save(function(err) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'User saved!'});
+        });
+    })
+    .get(function(req, res) {
+        Rating.find(function(err, rating) {
+            if (err)
+                res.send(err);
+            res.json(rating);
+        })
+    });
 
 router.route('/photocollections')
     .post(function(req,res) {
