@@ -34,9 +34,9 @@
             </div><br /><br /><br /><br />
             <div class="ptext3">Would you like to make this collection&nbsp; &nbsp;
             <div class="ui buttons">
-              <button (click)="createCollection(name.value,description.value,true);" class="ui positive button">Public</button>
+              <button (click)="createCollection(name.value,description.value,true);" routerLink="/user-profile" class="ui positive button">Public</button>
               <div class="or"></div>
-              <button (click)="createCollection(name.value,description.value,false);" class="ui button">Private</button>
+              <button (click)="createCollection(name.value,description.value,false);" routerLink="/user-profile" class="ui button">Private</button>
             </div></div>
         </div>
 

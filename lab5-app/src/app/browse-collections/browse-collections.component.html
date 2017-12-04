@@ -32,9 +32,10 @@
                     <a *ngIf="collection.public" class = "ptext3" data-tooltip="Public Collection" href="" style="color: white;"><i class="users icon"></i></a>
                     <a *ngIf="!collection.public" class = "ptext3" data-tooltip="Private Collection" href="" style="color: white;"><i class="unhide icon"></i></a>
                     {{collection.name}} &nbsp;&nbsp;   {{collection.sumOfRatings/collection.numberOfRatings || collection.sumOfRatings}} <i class="star icon"></i>
+                     <p style="font-size:14px;">Created by: {{collection.username}}</p>
 
                 </div>
-                <img class="ui bordered image" src="{{collection.photos[0]}}">
+                <img class="ui bordered image" src="{{collection.photos[0]}}" style="font-family: 'Gruppo', cursive;font-size:16px;letter-spacing:0px;text-transform:none;" alt="[This collection is empty!]">
                 <div class="ptext4">
                     <a href="" (click)="viewCollection(collection._id)" routerLink="/view-collection" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
                 </div>

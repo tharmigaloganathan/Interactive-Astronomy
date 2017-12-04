@@ -30,7 +30,7 @@
             <select value="">Choose a Collection</select>
             <option *ngFor="let collection of collections" [value]="collection.name" (change)="print(collection)"><p >{{collection.name}}</p></option>
         </select><br />
-        <div id="button" (click)="print(selectedCollection.value)" class="ui large teal submit button">Authenticate</div><br /><br />
+        <div id="button" (click)="print(selectedCollection.value)" routerLink="/user-profile" class="ui large teal submit button">Add to Collection!</div><br /><br />
 
 
         <a class="ptext2" routerLink="/add-collection">Or, would you like to create a new collection?</a>

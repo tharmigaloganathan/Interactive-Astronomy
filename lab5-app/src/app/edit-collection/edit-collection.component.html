@@ -1,0 +1,57 @@
+
+<div class="ui fixed inverted menu">
+    <a routerLink="/main" class="item">
+        Home
+    </a>
+    <a routerLink="/user-profile" class="ui active item">
+        Your Collections
+    </a>
+    <a routerLink="/dashboard" class="item">
+        Browse Images
+    </a>
+    <a routerLink="/browse-collections" class="item">
+        Browse Collections
+    </a>
+    <div class="right menu">
+        <a routerLink="/login" class="ui item">
+            Login
+        </a>
+    </div>
+</div>
+
+
+<div class = "parallax">
+    <div class="ptext">
+        Edit Collection<br /><br />
+        <a class="ptext4" routerLink="/add-collection">Or, would you like to create a new collection?</a>
+        <br /><br />
+    </div>
+
+    <div class="ptext2">
+        Name: &nbsp;
+        <div class="ui input focus" style="font-size: 14px;width: 20%;">
+            <input #name type="text" placeholder="{{collection.name}}">
+        </div>&nbsp; &nbsp;&nbsp; &nbsp;
+        Description: &nbsp;
+        <div class="ui input focus" style="font-size: 14px;width: 30%;">
+            <input #description type="text" placeholder="{{collection.description}}">
+        </div><br /><br /><br /><br />
+        <div class="ptext3">Would you like to make this collection public? &nbsp; &nbsp;
+            <div class="ui checkbox">
+                <input type="checkbox"  name="example">
+                <label></label>
+            </div>
+        </div> <br /><br />
+        <button (click)="saveChanges();" class="ui purple button">Save Changes!</button>
+        <div id="photoGrid" class = "ui divided grid" >
+            <div class="four wide column" *ngFor="let photo of collection.photos; let i = index" ><div class="ui bordered image">
+
+                <img class="ui bordered image" src="{{photo}}" style="font-family: 'Gruppo', cursive;font-size:16px;letter-spacing:0px;text-transform:none;" alt="[This collection has no photos!]">
+                <div class="ptext4">
+                    <a (click)="deleteImage(collection._id)" routerLink="/user-profile" data-tooltip="Delete Collection" style="color: white;"><i class="trash outline icon"></i></a>
+                </div>
+
+            </div></div>
+        </div>
+    </div>
+</div>

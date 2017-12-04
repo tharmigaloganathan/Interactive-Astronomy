@@ -39,6 +39,10 @@ export class EditCollectionsService {
         req.subscribe();
     }
 
+    deleteCollection(_collectionID: string) {
+        this._http.delete(`${this.url}/photocollections/${_collectionID}`).subscribe((ok)=>{console.log(ok)});
+    }
+
     postExistingCollection(collection: any, _entryID:string) {
         this._http.delete(`${this.url}/photocollections/${_entryID}`).subscribe((ok)=>{console.log(ok)});
         const body = {

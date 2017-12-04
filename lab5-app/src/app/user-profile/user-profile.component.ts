@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EditCollectionsService } from "../edit-collections.service";
+import { Router} from "@angular/router";
+
+export const ITEM_NAME: string = 'collection_id';
+export const EDIT_NAME: string = 'edit_collection_id';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,11 +15,26 @@ export class UserProfileComponent implements OnInit {
     private collections: any[] = [];
     private username: string;
 
-  constructor(private _editCollections: EditCollectionsService) {
+  constructor(private _editCollections: EditCollectionsService, private router: Router) {
       this.username = this._editCollections.findUsername();
       this.getCollections();
       console.log(this.collections);
 
+   }
+
+   editCollection(_collectionID: string) {
+       localStorage.setItem(EDIT_NAME, _collectionID);
+   }
+
+   deleteCollection(_collectionID : string){
+       this._editCollections.deleteCollection(_collectionID);
+       window.location.reload();
+   }
+
+   viewCollection(_collectionID : string) {
+       // console.log(this.images[i]);
+       localStorage.setItem(ITEM_NAME, _collectionID);
+       this.router.navigate(['./view-collection']);
    }
 
    getCollections() {

@@ -17,6 +17,8 @@ import { AddCollectionComponent } from './add-collection/add-collection.componen
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BrowseCollectionsComponent } from './browse-collections/browse-collections.component';
 import { ViewCollectionComponent } from './view-collection/view-collection.component';
+import { EditCollectionComponent } from './edit-collection/edit-collection.component';
+import { CreateNewAccountComponent } from './create-new-account/create-new-account.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'add-collection', component: AddCollectionComponent }
   { path: 'view-collection', component: ViewCollectionComponent }
+  { path: 'edit-collection', component: EditCollectionComponent }
   // { path: 'dashboard', component: DashboardComponent }
   //[AUTHENTICATEGUARD] SHOULD BE APPLIED TO EACH ROUTE THAT SHOULD BE KEPT PRIVATE
 ];
@@ -42,7 +45,9 @@ const appRoutes: Routes = [
     AddCollectionComponent,
     UserProfileComponent,
     BrowseCollectionsComponent,
-    ViewCollectionComponent
+    ViewCollectionComponent,
+    EditCollectionComponent,
+    CreateNewAccountComponent
   ],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: true }),

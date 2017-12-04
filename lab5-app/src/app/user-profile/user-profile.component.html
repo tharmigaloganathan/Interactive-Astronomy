@@ -34,11 +34,14 @@
                     {{collection.name}} &nbsp;&nbsp;   {{collection.sumOfRatings/collection.numberOfRatings || collection.sumOfRatings}} <i class="star icon"></i>
 
                 </div>
-                <img class="ui bordered image" src="{{collection.photos[0]}}">
+
+                <img class="ui bordered image" src="{{collection.photos[0]}}" style="font-family: 'Gruppo', cursive;font-size:16px;letter-spacing:0px;text-transform:none;" alt="[This collection has no photos!]">
                 <div class="ptext4">
-                    <a (click)="addImageToLocalStorage(image)" data-tooltip="Delete Collection" style="color: white;"><i class="trash outline icon"></i></a>
-                    <a href="" data-tooltip="Edit Collection" style="color: white;"><i class="edit icon"></i></a>
-                    <a href="" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
+
+                    <a (click)="deleteCollection(collection._id)" routerLink="/user-profile" data-tooltip="Delete Collection" style="color: white;"><i class="trash outline icon"></i></a>
+                    <a href="" (click)="editCollection(collection._id)" data-tooltip="Edit Collection" routerLink="/edit-collection" style="color: white;"><i class="edit icon"></i></a>
+                    <a href="" (click)=viewCollection(collection._id) routerLink="/view-collection" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
+                    <a href="" routerLink="/dashboard" data-tooltip="Add To Collection" style="color: white;"><i class="plus square outline icon"></i></a>
                 </div>
 
             </div></div>
