@@ -157,6 +157,8 @@ router.route('/users')
         user.username = req.body.username;
         user.password = req.body.password;
         user.admin = req.body.admin;
+        user.firstname = req.body.firstname;
+        user.lastname = req.body.lastname;
         user.save(function(err) {
             if (err)
                 res.send(err);

@@ -7,6 +7,7 @@ import {User} from './user';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 export const TOKEN_NAME: string = 'jwt_token';
 
@@ -23,6 +24,18 @@ export class AuthenticateService {
 
     // constructor(private _http:Http, public jwtHelper: JwtHelper) { }
     constructor(private _http:Http) { }
+
+    postNewAccount(_newUser:any) {
+        const body = {
+            admin: false,
+            username: _newUser.username,
+            password: _newUser.password,
+            lastname: _newUser.lastname,
+            firstname: _newUser.firstname
+        }
+        const req = this._http.post(`${this.url}/users`, body);
+        req.subscribe();
+    }
 
     //ALL FUNCTIONS BELOW DEAL WITH TOKEN IN LOCAL STORAGE
     getToken(): any {
@@ -75,7 +88,12 @@ export class AuthenticateService {
         .catch(this.handleError);
     }
 
-    private isAuthenticated() {
+    getUsers(): Promise<any> {
+        return this._http
+        .get(`${this.url}/users`)
+        .toPromise()
+        .then(res => res.json())
+        .catch(this.handleError);
     }
 
     private extractData(res:Response) {

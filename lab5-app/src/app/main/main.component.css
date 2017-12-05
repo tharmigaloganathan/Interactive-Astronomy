@@ -42,7 +42,7 @@
   position:absolute;
   opacity: 1 !important;
   font-family: 'Kanit', sans-serif;
-  top:30%;
+  top:40%;
   /*left: 10%;*/
   width:100%;
   text-align:center;
@@ -50,4 +50,19 @@
   font-size:30px;
   letter-spacing:8px;
   text-transform:uppercase;
+}
+
+.ptext3{
+    font-family: 'Gruppo', cursive;
+  position:absolute;
+  opacity: 1 !important;
+  /*font-family: 'Kanit', sans-serif;*/
+  top:35%;
+  /*left: 10%;*/
+  width:100%;
+  text-align:center;
+  color:#ffffff;
+  font-size:20px;
+  letter-spacing:0px;
+  text-transform:none;
 }
