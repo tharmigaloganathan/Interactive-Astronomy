@@ -16,6 +16,11 @@ export class EditCollectionsService {
 
     }
 
+    putCollection(_collectionID:string, _collection: any) {
+        const req = this._http.put(`${this.url}/photocollections/${_collectionID}`, _collection);
+        req.subscribe();
+    }
+
     getCollections(): Promise<any> {
         return this._http
         .get(`${this.url}/photocollections`)

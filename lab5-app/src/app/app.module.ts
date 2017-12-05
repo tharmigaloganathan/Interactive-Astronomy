@@ -25,15 +25,13 @@ const appRoutes: Routes = [
   { path: 'main',       component: MainComponent },
   { path: '',       component: MainComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard] },
-  { path: 'browse-collections', component: BrowseCollectionsComponent},
-  { path: 'add-image', component: AddImageComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'add-collection', component: AddCollectionComponent }
+  { path: 'browse-collections', component: BrowseCollectionsComponent },
+  { path: 'add-image', component: AddImageComponent, canActivate: [AuthenticateGuard]  },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthenticateGuard]  },
+  { path: 'add-collection', component: AddCollectionComponent, canActivate: [AuthenticateGuard]  }
   { path: 'view-collection', component: ViewCollectionComponent }
-  { path: 'edit-collection', component: EditCollectionComponent }
+  { path: 'edit-collection', component: EditCollectionComponent, canActivate: [AuthenticateGuard]  }
   { path: 'new-account', component: CreateNewAccountComponent }
-  // { path: 'dashboard', component: DashboardComponent }
-  //[AUTHENTICATEGUARD] SHOULD BE APPLIED TO EACH ROUTE THAT SHOULD BE KEPT PRIVATE
 ];
 
 @NgModule({

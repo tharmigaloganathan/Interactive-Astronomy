@@ -110,11 +110,11 @@ router.route('/photocollections/:user_id')
         });
     })
 
-    .post(function(req, res) {
+    .put(function(req, res) {
         PhotoCollection.findById(req.params.user_id, function(err, photoCollection) {
             if (err)
                 res.send(err);
-            var photoCollection = new PhotoCollection();
+            // var photoCollection = new PhotoCollection();
             photoCollection.username = req.body.username;
             photoCollection.description = req.body.description;
             photoCollection.name = req.body.name;

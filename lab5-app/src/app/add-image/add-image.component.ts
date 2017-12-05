@@ -13,7 +13,6 @@ export class AddImageComponent implements OnInit {
 
     private imageURL: string;
     private collections: any[] = [];
-    // private oldCollection: any = {};
     private newCollection: any = {};
     private username: string;
     private collectionName: string;
@@ -47,11 +46,8 @@ export class AddImageComponent implements OnInit {
        this.newCollection.photos.push(this.imageURL);
        console.log(this.newCollection);
        console.log(this.entryID);
-       this._editCollections.postExistingCollection(this.newCollection, this.entryID);
+       this._editCollections.putCollection(this.entryID, this.newCollection);
 
-       //find the id of the collection entry
-       //copy contents of this entry
-       //create a new post request with this entry
    }
 
    getCollections() {

@@ -14,7 +14,7 @@
     </a>
     <div class="right menu">
         <a routerLink="/login" class="ui item">
-            Login
+            Logout
         </a>
     </div>
 </div>
@@ -32,39 +32,34 @@
         <div class="ui input focus" style="font-size: 14px;width: 20%;">
             <input #name type="text" placeholder="{{collection.name}}">
         </div>&nbsp; &nbsp;&nbsp; &nbsp;
+
         Description: &nbsp;
         <div class="ui input focus" style="font-size: 14px;width: 30%;">
             <input #description type="text" placeholder="{{collection.description}}">
         </div><br /><br /><br /><br />
-        <a *ngIf="collection.public" class = "ptext3" href="" style="color: white; font-size: 18px;">
+
+        <a *ngIf="collection.public" class = "ptext3" style="color: white; font-size: 18px;">
             This collection is currently public
             <i class="users icon"></i><br /><br />
             <div class="ptext3">Would you like to keep this collection as public? &nbsp; &nbsp;
-                <div class="ui checkbox">
-                    <input type="checkbox"  name="example">
-                    <label></label>
-                </div>
             </div>
         </a>
-        <a *ngIf="!collection.public" class = "ptext3" href="" style="color: white;">
+        <a *ngIf="!collection.public" class = "ptext3" style="color: white;">
             This collection is currently private
             <i class="unhide icon"></i><br /><br />
             <div class="ptext3">Would you like to make this collection public? &nbsp; &nbsp;
-                <div class="ui checkbox">
-                    <input type="checkbox"  name="example">
-                    <label></label>
-                </div>
             </div>
-        </a><br />
+        </a><div class="ui input focus" style="font-size: 14px;width: 5%;">
+            <input #public type="text" placeholder="y/n">
+        </div><br />
 
-
-        <button (click)="saveChanges();" class="ui purple button">Save Changes!</button>
+        <button (click)="saveChanges(name.value, description.value, public.value);" class="ui purple button">Save Changes!</button>
         <div id="photoGrid" class = "ui divided grid" >
             <div class="four wide column" *ngFor="let photo of collection.photos; let i = index" ><div class="ui bordered image">
 
                 <img class="ui bordered image" src="{{photo}}" style="font-family: 'Gruppo', cursive;font-size:16px;letter-spacing:0px;text-transform:none;" alt="[This collection has no photos!]">
                 <div class="ptext4">
-                    <a (click)="deleteImage(collection._id)" routerLink="/user-profile" data-tooltip="Delete Image" style="color: white;"><i class="trash outline icon"></i></a>
+                    <a (click)="deleteImage(photo)"  data-tooltip="Delete Image" style="color: white;"><i class="trash outline icon"></i></a>
                 </div>
 
             </div></div>

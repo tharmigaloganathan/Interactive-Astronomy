@@ -14,7 +14,7 @@
     </a>
     <div class="right menu">
         <a routerLink="/login" class="ui item">
-            Login
+            Logout
         </a>
     </div>
 </div>
@@ -25,13 +25,19 @@
             View Collection<br /><br />
             <!-- <div class="ui star rating">hello</div> -->
             <!-- <div class="ui mini star rating"></div> -->
-            <a class="ptext2" routerLink="/add-collection">{{collection.name}}</a> <br/><br/><br/><br/>
+            <a class="ptext2">Name:{{collection.name}}
+                <br/>Description: {{collection.description}}
+                <br />Created by: {{collection.username}}
+                <br />Current rating: {{collection.sumOfRatings / collection.numberOfRatings || 0}}</a> <br/><br/><br/><br/>
 
             <div class="ptext3">
                     Rate this Collection! &nbsp; <div style="color: white;" class="ui huge star rating"></div>&nbsp;&nbsp;
-                    <button (click)="submitRating();"class="ui button">Submit Rating</button>
+                    <button (click)="submitRating(collection._id, collection.name, collection.username);"class="ui button">Submit Rating</button>
                     <p style="color: red;">
                         {{errormsg}}
+                    </p>
+                    <p style="color: green;" >
+                        {{successmsg}}
                     </p>
             </div>
 

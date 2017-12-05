@@ -13,7 +13,10 @@
         Browse Collections
     </a>
     <div class="right menu">
-        <a routerLink="/login" class="ui item">
+        <a *ngIf="loggedIn()" routerLink="/login" class="ui item">
+            Logout
+        </a>
+        <a *ngIf="!loggedIn()" routerLink="/login" class="ui item">
             Login
         </a>
     </div>

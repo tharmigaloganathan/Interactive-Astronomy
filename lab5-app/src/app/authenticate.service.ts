@@ -65,6 +65,10 @@ export class AuthenticateService {
     isTokenValid(): boolean {
         return this.checkTokenExpirationDate(this.decodeBase64(this.getToken()).exp);
     }
+    isAdmin() {
+        if(this.getToken() == null) return false;
+        return this.decodeBase64(this.getToken()).admin;
+    }
     loggedIn() {
         if(this.getToken() == null) return false;
         return this.isTokenValid();

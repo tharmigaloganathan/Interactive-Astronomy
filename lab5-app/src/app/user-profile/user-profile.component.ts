@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EditCollectionsService } from "../edit-collections.service";
 import { Router} from "@angular/router";
+import {AuthenticateService} from '../authenticate.service'; //injecting AuthenticateService
+import {AuthenticateGuard} from '../authenticate.guard';
 
 export const ITEM_NAME: string = 'collection_id';
 export const EDIT_NAME: string = 'edit_collection_id';
@@ -15,11 +17,11 @@ export class UserProfileComponent implements OnInit {
     private collections: any[] = [];
     private username: string;
 
-  constructor(private _editCollections: EditCollectionsService, private router: Router) {
+  constructor(private _authenticateService:AuthenticateService, private _editCollections: EditCollectionsService, private router: Router) {
       this.username = this._editCollections.findUsername();
       this.getCollections();
       console.log(this.collections);
-
+      console.log(this._authenticateService.loggedIn());
    }
 
    editCollection(_collectionID: string) {

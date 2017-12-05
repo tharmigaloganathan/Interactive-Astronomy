@@ -21,17 +21,31 @@ export class EditCollectionComponent implements OnInit {
       this.getCollection();
   }
 
-  deleteImage() {
-      //change colour?, add to list of images to deleteImage
-      //reload page
+  deleteImage(_imageURL:string) {
+      let newPhotos = []
+      for(var i = 0; i < this.collection.photos.length; i++) {
+          if(this.collection.photos[i] != _imageURL) {
+              newPhotos.push(this.collection.photos[i]);
+          }
+      }
+      this.collection.photos = newPhotos;
+      this._editCollections.putCollection(this.collection._id, this.collection);
   }
 
   saveChanges(_name: string, _description:string, _public: boolean){
-      //check to see if _name and _description are null, if null, keep unchanged
-      //check if any images are in "imagesToDelete", and delete them from the collection.photos array
-      //check _public
-      //make post
-      //redirect to user-profile
+      console.log(this.collection);
+      if(_name != null && _name != "") {
+          this.collection.name = _name;
+      }
+      if(_description != null && _description != "") {
+          this.collection.description = _description;
+      }
+      if(_public != null && _public != "") {
+          if(_public == "y") this.collection.public = true;
+          else if(_public == "n") this.collection.public = false;
+      }
+      this._editCollections.putCollection(this.collection._id, this.collection);
+      this.router.navigate(['/user-profile']);
   }
 
   getCollection() {
