@@ -1,8 +1,3 @@
-/*#body {
-    background-image: url("../../assets/images/background-image.jpg");
-    background-attachment: fixed;
-}*/
-
 .parallax {
     background-image: linear-gradient(
     rgba(255,255,255,0.2),
@@ -16,34 +11,24 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*background-image: linear-gradient(
-    rgba(255,255,255,0.2),
-    rgba(100,100,100,0.3)),url("../../assets/images/background-image.jpg");
-    background-repeat: no-repeat;
-    background-attachment: scroll;*/
 }
-
 
 .ptext{
     font-family: 'Gruppo', cursive;
   position:absolute;
   opacity: 1 !important;
   top:20%;
-  /*left: 0%;*/
   width:100%;
   text-align:center;
   color:#FFFFFF;
   font-size:70px;
   letter-spacing:8px;
-  /*text-transform:uppercase;*/
 }
 .ptext2{
     font-family: 'Gruppo', cursive;
   position:absolute;
   opacity: 1 !important;
-  /*font-family: 'Kanit', sans-serif;*/
   top:35%;
-  /*left: 10%;*/
   width:100%;
   text-align:center;
   color:#ffffff;
@@ -51,7 +36,6 @@
   letter-spacing:1px;
   text-transform:uppercase;
 }
-
 .ptext3{
     font-family: 'Gruppo', cursive;
     /*font-family: 'Oswald', 'Helvetica Neue', Arial, Helvetica, sans-serif;*/

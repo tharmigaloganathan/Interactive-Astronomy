@@ -1,4 +1,4 @@
-
+<!-- NAVBAR -->
 <div class="ui fixed inverted menu">
     <a routerLink="/main" class="item">
         Home
@@ -18,24 +18,21 @@
         </a>
     </div>
 </div>
-
-
+<!-- PARALLAX DIV FOR BACKGROUND -->
 <div class = "parallax">
     <div class="ptext">
+        <!-- TITLE -->
         Add Image<br /><br /><br /><br />
-
+        <!-- IMAGE -->
         <img  class="ui large image" src={{imageURL}} style="background-color: #000000;"><br />
-
+        <!-- DROPDOWN FOR COLLECTION SELECTION -->
         <select class="ui dropdown" #selectedCollection>
             <select value="">Choose a Collection</select>
             <option *ngFor="let collection of collections" [value]="collection.name" (change)="print(collection)"><p >{{collection.name}}</p></option>
         </select><br />
-        <div id="button" (click)="print(selectedCollection.value)" class="ui large teal submit button">Add to Collection!</div><br /><br />
-
-
+        <!-- SUBMIT BUTTON TO CREATE A NEW COLLECTION -->
+        <div id="button" (click)="print(selectedCollection.value)" routerLink="/user-profile" class="ui large teal submit button">Add to Collection!</div><br /><br />
+        <!-- REDIRECT TO CREATING A NEW COLLECTION -->
         <a class="ptext2" routerLink="/add-collection">Or, would you like to create a new collection?</a>
-
     </div>
-
-
 </div>

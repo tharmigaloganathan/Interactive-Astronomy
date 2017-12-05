@@ -9,21 +9,23 @@ import { Router} from "@angular/router";
     providers: [AuthenticateService]
 })
 export class CreateNewAccountComponent implements OnInit {
-
+    //VARIABLE DECLARATIONS
     private newUser: any = {};
     private users: any[] = [];
     private errormsg: string;
 
+    //CONSTRUCTOR TO GET ALL USERS
     constructor(private _authenticateService:AuthenticateService, private router: Router) {
         this.getUsers();
-        console.log(this.users);
     }
 
+    //VALIDATES THE EMAIL USER INPUTS
     validateEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
 
+    //CHECKS TO SEE IF THE EMAIL ALREADY EXISTS IN THE DATABASE
     emailExistsInDatabase(_username:string){
         for(var i = 0; i < this.users.length; i++) {
             console.log(this.users[i].username);
@@ -35,6 +37,7 @@ export class CreateNewAccountComponent implements OnInit {
         return false;
     }
 
+    //CREATES NEW ACCOUNT, POSTS THE ACCOUNT TO THE DATABASE AND CREATES A NEW TOKEN FOR THE USER
     createAccount(_fname:string, _lname:string, _username:string, _password:string) {
         if(this.emailExistsInDatabase(_username)) {
             this.errormsg = "error, this email is already taken!";
@@ -60,6 +63,7 @@ export class CreateNewAccountComponent implements OnInit {
         this._authenticateService.createAndSetToken(_username, false);
     }
 
+    //RETURNS ALL USERS FROM THE SERVER
     getUsers() {
         this._authenticateService.getUsers().then(users => {
             console.log(users);
@@ -68,9 +72,6 @@ export class CreateNewAccountComponent implements OnInit {
                 console.log(this.users);
             }
         });
-    }
-
-    ngOnInit() {
     }
 
 }

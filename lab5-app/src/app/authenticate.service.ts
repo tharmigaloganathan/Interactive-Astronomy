@@ -13,18 +13,17 @@ export const TOKEN_NAME: string = 'jwt_token';
 
 @Injectable()
 export class AuthenticateService {
-
+    //VARIABEL DECLARATION
     private iat: any;
     private exp: any;
     private newToken: any;
     private buffer: any;
     private url: string = 'http://localhost:8080/api/';
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    //maybe user should be authenticated within this service? OR give a method the component can user to obtain a token
 
-    // constructor(private _http:Http, public jwtHelper: JwtHelper) { }
     constructor(private _http:Http) { }
 
+    //POSTS THE NEW ACCOUNT TO THE DATABASE
     postNewAccount(_newUser:any) {
         const body = {
             admin: false,
@@ -85,6 +84,7 @@ export class AuthenticateService {
         localStorage.setItem(TOKEN_NAME, this.encodeBase64(this.newToken));
     }
 
+    //GETS DATA FROM THE SERVER
     getData():Observable<User[]> {
 
         return this._http.get(`${this.url}/users`)
@@ -100,6 +100,7 @@ export class AuthenticateService {
         .catch(this.handleError);
     }
 
+    //EXTRACTS DATA FROMT HE REQUEST
     private extractData(res:Response) {
         let body = res.json();
         return body;

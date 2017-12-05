@@ -1,4 +1,4 @@
-
+<!-- NAVBAR -->
 <div class="ui fixed inverted menu">
     <a routerLink="/main" class="item">
         Home
@@ -22,27 +22,31 @@
     </div>
 </div>
 
-
-    <div class = "parallax">
-        <div class="ptext">
-            Browse Collections<br /><br />
-            <!-- <a class="ptext3" routerLink="/add-collection">Or, would you like to create a new collection?</a> -->
-            <br /><br />
-        </div>
-        <div id="photoGrid" class = "ui divided grid" >
-            <div class="four wide column" *ngFor="let collection of collections; let i = index" ><div class="ui bordered image">
+<!-- PARALLAX BACKGROUND DIV HOLDS ALL CONTENT -->
+<div class = "parallax">
+    <div class="ptext">
+        <!-- TITLE -->
+        Browse Collections<br /><br />
+        <br /><br />
+    </div>
+    <!-- GRID TO HOLD ALL PHOTOS -->
+    <div id="photoGrid" class = "ui divided grid" >
+        <div class="four wide column" *ngFor="let collection of collections; let i = index" >
+            <div class="ui bordered image">
+                <!-- TEXT TO HOLD RATINGS, NAME AND CREATOR INFO OF THE COLLECTION -->
                 <div class="ptext2">
                     <a *ngIf="collection.public" class = "ptext3" data-tooltip="Public Collection" href="" style="color: white;"><i class="users icon"></i></a>
                     <a *ngIf="!collection.public" class = "ptext3" data-tooltip="Private Collection" href="" style="color: white;"><i class="unhide icon"></i></a>
                     {{collection.name}} &nbsp;&nbsp;   {{collection.sumOfRatings/collection.numberOfRatings || collection.sumOfRatings}} <i class="star icon"></i>
-                     <p style="font-size:14px;">Created by: {{collection.username}}</p>
-
+                    <p style="font-size:14px;">Created by: {{collection.username}}</p>
                 </div>
+                <!-- IMAGE -->
                 <img class="ui bordered image" src="{{collection.photos[0]}}" style="font-family: 'Gruppo', cursive;font-size:16px;letter-spacing:0px;text-transform:none;" alt="[This collection is empty!]">
+                <!-- LINK TO VIEW COLLECTION -->
                 <div class="ptext4">
                     <a href="" (click)="viewCollection(collection._id)" routerLink="/view-collection" data-tooltip="View Collection" style="color: white;"><i class="external icon"></i></a>
                 </div>
-
-            </div></div>
+            </div>
         </div>
     </div>
+</div>

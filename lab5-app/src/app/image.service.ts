@@ -9,6 +9,7 @@ export class ImageService {
 
     constructor(private _http:Http) { }
 
+    //EXTRACTSDATA FROM GET REQUEST
     private extractData(res:Response) {
         let body = res.json();
         console.log(body);
@@ -24,11 +25,13 @@ export class ImageService {
         return null;
     }
 
+    //GET REQUEST FROM SERVER
     getRequest(_url: string): any[] {
         return this._http.get(_url)
         .map(this.extractData);
     }
 
+    //GETS IMAGES WITH A TIMEOUT
     getImages(_url: string) {
         setTimeout(
             () => this.getRequest(_url).subscribe(data => this.data = data),
@@ -36,6 +39,7 @@ export class ImageService {
         return this.data;
     }
 
+    //ISSUES SEARCH API CALL TO THE NASA IMAGE API
     searchImages(_queryParam: string): any[] {
         _queryParam = "search?q=" + _queryParam.replace(/ /g, "%20");
         console.log(_queryParam);

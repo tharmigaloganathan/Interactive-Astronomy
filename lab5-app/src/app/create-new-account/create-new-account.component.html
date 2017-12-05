@@ -1,4 +1,4 @@
-
+<!-- NAVBAR -->
 <div class="ui fixed inverted menu">
     <a routerLink="/main" class="item">
         Home
@@ -19,15 +19,15 @@
     </div>
 </div>
 
-
+<!-- PARALLAX DIV TO HOLD CONTENT -->
 <div class = "parallax">
     <div class="ptext">
         Create a New Account<br /><br />
         <a class="ptext4" routerLink="/login">Do you already have an account? Go to the login page.</a>
         <br /><br />
     </div>
-
     <div class="ptext2">
+        <!-- FIELDS FOR USER TO FILL OUT -->
         First Name: &nbsp;
         <div class="ui input focus" style="font-size: 14px;width: 20%;">
             <input #fname type="text" placeholder="First Name">
@@ -36,7 +36,6 @@
         <div class="ui input focus" style="font-size: 14px;width: 30%;">
             <input #lname type="text" placeholder="Last Name">
         </div><br /><br /><br /><br />
-
         Email Address: &nbsp;
         <div class="ui input focus" style="font-size: 14px;width: 30%;">
             <input #username type="text" placeholder="Email Address">
@@ -45,12 +44,13 @@
         <div class="ui input focus" style="font-size: 14px;width: 20%;">
             <input #password type="password" name="password" placeholder="Password">
         </div>&nbsp; &nbsp;&nbsp; &nbsp;
-         <br /><br /> <br /><br />
+        <br /><br /> <br /><br />
+        <!-- CREATE ACCOUNT BUTTON -->
         <div (click)="createAccount(fname.value, lname.value, username.value, password.value);" class="ui large teal submit button">Authenticate</div><br /><br />
-         <br />
-         <p style="color: red;">
-             {{errormsg}}
-         </p>
-
+        <br />
+        <!-- ERROR MESSAGE -->
+        <p style="color: red;">
+            {{errormsg}}
+        </p>
     </div>
 </div>

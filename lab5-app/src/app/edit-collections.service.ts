@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class EditCollectionsService {
+    //VARIABLE DECLARATION
     private username: string;
     private collections: any[];
     private temp: any[] = [];
@@ -16,11 +17,13 @@ export class EditCollectionsService {
 
     }
 
+    //UPDATES COLLECTION
     putCollection(_collectionID:string, _collection: any) {
         const req = this._http.put(`${this.url}/photocollections/${_collectionID}`, _collection);
         req.subscribe();
     }
 
+    //GETS COLLECTIONS FROM SERVER
     getCollections(): Promise<any> {
         return this._http
         .get(`${this.url}/photocollections`)
@@ -29,6 +32,7 @@ export class EditCollectionsService {
         .catch(this.handleError);
     }
 
+    //POSTS COLLECTION TO SERVER
     postCollection(collection: any) {
         const body = {
             username: collection.username,
@@ -44,10 +48,12 @@ export class EditCollectionsService {
         req.subscribe();
     }
 
+    //DELETES COLLECTION FROM SERVER
     deleteCollection(_collectionID: string) {
         this._http.delete(`${this.url}/photocollections/${_collectionID}`).subscribe((ok)=>{console.log(ok)});
     }
 
+    //DELETES EXISTING COLLECTION AND POSTS COLLECTION
     postExistingCollection(collection: any, _entryID:string) {
         this._http.delete(`${this.url}/photocollections/${_entryID}`).subscribe((ok)=>{console.log(ok)});
         const body = {
@@ -64,6 +70,7 @@ export class EditCollectionsService {
         req.subscribe();
     }
 
+    //GET COLLECTION OF A SPECIFIC USER
     getUserCollections(_userName:string) {
         this.getCollections().then(collections => {
             console.log(collections);
@@ -77,6 +84,7 @@ export class EditCollectionsService {
         });
     }
 
+    //GET USERNAME FROM LOCAL STORAGE "JWT_TOKEN"
     findUsername(){
         this.username = localStorage.getItem('jwt_token');
         this.username = JSON.parse(atob(this.username));
@@ -84,7 +92,7 @@ export class EditCollectionsService {
         return this.username;
     }
 
-
+    //HANDLES ERRORS FROM GET REQUEST
     private handleError(error:any) {
         let errMsg = (error.message) ? error.message :
         error.status ? `${error.status} - ${error.statusText}` : 'Server error';

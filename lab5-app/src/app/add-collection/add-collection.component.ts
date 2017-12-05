@@ -7,7 +7,9 @@ import { EditCollectionsService } from "../edit-collections.service";
   styleUrls: ['./add-collection.component.css'],
   providers: [EditCollectionsService]
 })
+
 export class AddCollectionComponent implements OnInit {
+    //declare variables
     private collections: any[] = [];
     private username: string;
     private newCollection: any = {};
@@ -16,12 +18,7 @@ export class AddCollectionComponent implements OnInit {
       this.username = this._editCollections.findUsername();
       console.log(this.username);
   }
-
-  getUserCollections(_userName:string) {
-
-
-  }
-
+  //creates new collection object and posts to the server using EditCollectionsService
   createCollection(_name:string, _description:string, _public:boolean) {
       console.log(_name, _description, _public);
       if(_public != null && _public != "") {
@@ -34,10 +31,5 @@ export class AddCollectionComponent implements OnInit {
       this.newCollection.description = _description;
       this._editCollections.postCollection(this.newCollection);
   }
-
-  ngOnInit() {
-  }
-
-
 
 }
