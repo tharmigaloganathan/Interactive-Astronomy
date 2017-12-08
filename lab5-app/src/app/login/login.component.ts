@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             if(this.users[i].username == username) {
                 if (this.users[i].password == password){
                     // this._authenticateService.setToken()
-                    this._authenticateService.createAndSetToken("admin", true);
+                    this._authenticateService.createAndSetToken(username, true);
                     this.ngErrorMsg = "";
                     this.ngSuccessMsg = "success";
                     this.router.navigate(['./dashboard']);
