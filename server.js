@@ -70,7 +70,7 @@ router.route('/ratings')
 router.route('/photocollections')
     .post(function(req,res) {
         var photoCollection = new PhotoCollection();
-        photoCollection.username = req.body.username;
+        photoCollection.username = req.body.username.username;
         photoCollection.description = req.body.description;
         photoCollection.name = req.body.name;
         photoCollection.numberOfRatings = req.body.numberOfRatings;
@@ -96,6 +96,7 @@ router.route('/photocollections/:user_id')
         PhotoCollection.findById(req.params.user_id, function(err, photoCollection) {
             if (err)
                 res.send(err);
+            console.log(photoCollection);
             res.json(photoCollection);
         });
     })

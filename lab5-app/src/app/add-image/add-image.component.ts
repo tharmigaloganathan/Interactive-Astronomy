@@ -44,12 +44,14 @@ export class AddImageComponent implements OnInit {
         this._editCollections.getCollections().then(collections => {
             console.log(collections);
             for(var i = 0; i < collections.length; i++) {
-                if(collections[i].username == this.username) {
+                if(collections[i].username == this.username.username) {
                     this.collections.push(collections[i]);
                     console.log(this.collections);
                 }
             }
         });
     }
+
+    ngOnInit() {}
 
 }

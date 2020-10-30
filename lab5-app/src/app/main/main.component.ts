@@ -15,7 +15,6 @@ export class MainComponent implements OnInit {
       return this._authenticateService.loggedIn();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

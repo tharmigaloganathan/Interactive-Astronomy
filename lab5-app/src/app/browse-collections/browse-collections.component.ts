@@ -48,12 +48,14 @@ export class BrowseCollectionsComponent implements OnInit {
             }
             //sorting the collection by rating
             this.collections.sort((a, b) => {
+                var ratingA = 0;
+                var ratingB = 0;
 
-                if( a.sumOfRatings==0 || a.numberOfRatings==0) let ratingA = 0;
-                else let ratingA = a.sumOfRatings/a.numberOfRatings;
+                if( a.sumOfRatings==0 || a.numberOfRatings==0) ratingA = 0;
+                else ratingA = a.sumOfRatings/a.numberOfRatings;
 
-                if( b.sumOfRatings==0 || b.numberOfRatings==0) let ratingB = 0;
-                else let ratingB = b.sumOfRatings/b.numberOfRatings;
+                if( b.sumOfRatings==0 || b.numberOfRatings==0) ratingB = 0;
+                else ratingB = b.sumOfRatings/b.numberOfRatings;
 
                 if (ratingA > ratingB) return -1;
                 else if (ratingA < ratingB) return 1;
@@ -61,5 +63,7 @@ export class BrowseCollectionsComponent implements OnInit {
             });
         });
     }
+
+    ngOnInit(){}
 
 }

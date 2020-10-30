@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EditCollectionsService } from "../edit-collections.service";
 import { ManageRatingsService } from "../manage-ratings.service";
 import { Router} from "@angular/router";
-import {AuthenticateService} from '../authenticate.service';
+import { AuthenticateService } from '../authenticate.service';
 declare var $:any;
 
 export const ITEM_NAME: string = 'collection_id';

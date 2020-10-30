@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PhotoCollection } from './photocollection';
 import { Http, Response, Headers } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -12,10 +13,7 @@ export class EditCollectionsService {
     private url: string = 'http://localhost:8080/api/';
     private userID: string;
 
-
-    constructor(private _http:Http) {
-
-    }
+    constructor(private _http:Http) {}
 
     //UPDATES COLLECTION
     putCollection(_collectionID:string, _collection: any) {
@@ -88,7 +86,7 @@ export class EditCollectionsService {
     findUsername(){
         this.username = localStorage.getItem('jwt_token');
         this.username = JSON.parse(atob(this.username));
-        this.username = this.username.username;
+        this.username = this.username;
         return this.username;
     }
 

@@ -28,9 +28,9 @@ const appRoutes: Routes = [
   { path: 'browse-collections', component: BrowseCollectionsComponent },
   { path: 'add-image', component: AddImageComponent, canActivate: [AuthenticateGuard]  },
   { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthenticateGuard]  },
-  { path: 'add-collection', component: AddCollectionComponent, canActivate: [AuthenticateGuard]  }
-  { path: 'view-collection', component: ViewCollectionComponent }
-  { path: 'edit-collection', component: EditCollectionComponent, canActivate: [AuthenticateGuard]  }
+  { path: 'add-collection', component: AddCollectionComponent, canActivate: [AuthenticateGuard]  },
+  { path: 'view-collection', component: ViewCollectionComponent },
+  { path: 'edit-collection', component: EditCollectionComponent, canActivate: [AuthenticateGuard]  },
   { path: 'new-account', component: CreateNewAccountComponent }
 ];
 

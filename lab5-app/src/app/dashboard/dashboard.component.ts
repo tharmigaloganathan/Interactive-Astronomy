@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
 
     //ADDS IMAGE URL TO LOCAL STORAGE AND REDIRECTS USER
     addImageToLocalStorage(_imageURL : number) {
-        localStorage.setItem(ITEM_NAME, _imageURL);
+        localStorage.setItem(ITEM_NAME, _imageURL.toString());
         this.router.navigate(['./add-image']);
     }
 
@@ -36,8 +36,6 @@ export class DashboardComponent implements OnInit {
         }
     }
 
-    ngOnInit() {
-    }
-
+    ngOnInit() {}
 
 }

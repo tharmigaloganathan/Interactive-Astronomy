@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PhotoCollection } from './photocollection';
 import { Http, Response, Headers } from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -51,7 +52,7 @@ export class ManageRatingsService {
     findUsername(){
         this.username = localStorage.getItem('jwt_token');
         this.username = JSON.parse(atob(this.username));
-        this.username = this.username.username;
+        this.username = this.username;
         return this.username;
     }
 

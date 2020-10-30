@@ -42,25 +42,23 @@ export class CreateNewAccountComponent implements OnInit {
         if(this.emailExistsInDatabase(_username)) {
             this.errormsg = "error, this email is already taken!";
             return;
-        }
-        if(!this.validateEmail(_username)) {
+        } else if(!this.validateEmail(_username)) {
             this.errormsg = "error, this is not a valid email!";
             return;
-        }
-        if(_password == null || _password == "") {
+        } else if(_password == null || _password == "") {
             this.errormsg = "error, you must enter a password!";
             return;
-        }
-        if(_username == null || _username== "") {
+        } else if(_username == null || _username== "") {
             this.errormsg = "error, you must enter an email!";
             return;
+        } else {
+            this.newUser.firstname = _fname;
+            this.newUser.lastname = _lname;
+            this.newUser.username = _username;
+            this.newUser.password = _password;
+            this._authenticateService.postNewAccount(this.newUser);
+            this._authenticateService.createAndSetToken(_username, false);
         }
-        this.newUser.firstname = _fname;
-        this.newUser.lastname = _lname;
-        this.newUser.username = _username;
-        this.newUser.password = _password;
-        this._authenticateService.postNewAccount(this.newUser);
-        this._authenticateService.createAndSetToken(_username, false);
     }
 
     //RETURNS ALL USERS FROM THE SERVER
@@ -73,5 +71,7 @@ export class CreateNewAccountComponent implements OnInit {
             }
         });
     }
+
+    ngOnInit(){}
 
 }

@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 export const TOKEN_NAME: string = 'jwt_token';
+declare const Buffer;
 
 @Injectable()
 export class AuthenticateService {
@@ -77,8 +78,8 @@ export class AuthenticateService {
     }
     createAndSetToken(_username: string, _admin: boolean) {
         this.newToken = {
-            username: _username;
-            admin: _admin;
+            username: _username,
+            admin: _admin,
         }
         this.newToken = this.addExpAndIatToToken(this.newToken);
         localStorage.setItem(TOKEN_NAME, this.encodeBase64(this.newToken));

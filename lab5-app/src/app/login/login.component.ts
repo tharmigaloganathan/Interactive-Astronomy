@@ -22,9 +22,6 @@ export class LoginComponent implements OnInit {
         this._authenticateService.logout();
     }
 
-    ngOnInit() {
-    }
-
     getUsers() {
         this._authenticateService.getData()
         .subscribe(
@@ -57,5 +54,7 @@ export class LoginComponent implements OnInit {
         this.ngErrorMsg = "incorrect credentials!";
         return;
     }
+
+    ngOnInit() {}
 
 }

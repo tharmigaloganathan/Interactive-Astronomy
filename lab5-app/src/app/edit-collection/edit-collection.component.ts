@@ -19,7 +19,7 @@ export class EditCollectionComponent implements OnInit {
     //GETS DATA FROM SERVER
     constructor(private _editCollections: EditCollectionsService, private router: Router) {
         this.collectionID = localStorage.getItem(ITEM_NAME);
-        console.log(this.current_id);
+        // console.log(this.current_id);
         this.getCollection();
     }
 
@@ -36,7 +36,7 @@ export class EditCollectionComponent implements OnInit {
     }
 
     //SAVES ANY CHANGES THE USER MADE
-    saveChanges(_name: string, _description:string, _public: boolean){
+    saveChanges(_name: string, _description:string, _public: string){
         console.log(this.collection);
         if(_name != null && _name != "") {
             this.collection.name = _name;
@@ -65,7 +65,6 @@ export class EditCollectionComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
 }
